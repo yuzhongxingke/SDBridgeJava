@@ -1,6 +1,7 @@
 ![](Resource/SDBridgeJava.png)
 ![language](https://img.shields.io/badge/Language-Java-green)
 ![language](https://img.shields.io/badge/support-Javascript/Async/Await-green)
+![language](https://img.shields.io/badge/support-JitPack-green)
 
 Usage
 -----
