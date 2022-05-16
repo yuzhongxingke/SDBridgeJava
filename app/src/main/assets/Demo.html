@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+            <title>Title</title>
+    </head>
+    <script>
+        setTimeout(()=>{
+            console.log("Demo222222222222222222");
+            const bridge = window.WebViewJavascriptBridge;
+            // JS尝试调用原生方法，用来判断自身是否被原生加载成功,并且让自己知道自己使用者是在安卓的App中还是在iOS的App中
+            bridge.callHandler('DeviceLoadJavascriptSuccess', {key: 'JSValue'}, function(response) {
+                    let result = response.result
+                    if (result === "iOS") {
+                        console.log("Javascript was loaded by IOS and successfully loaded.");
+                        window.iOSLoadJSSuccess = true;
+                    } else if (result === "Android") {
+                        console.log("Javascript was loaded by Android and successfully loaded.");
+                        window.AndroidLoadJSSuccess = true;
+                    }
+                });
+                // JS注册方法让原生来调用
+            bridge.registerHandler('GetToken', function(data, responseCallback) {
+                    console.log(data);
+                    let result = {token: "I am javascript's token"}
+                    //JS拿到数据，返回给原生
+                    responseCallback(result)
+                });
+            bridge.registerHandler('AsyncCall', function(data, responseCallback) {
+                console.log(data);
+                (async () => {//双括号表示立即执行的匿名函数
+                    const callback = await generatorLogNumber(1);
+                    let result = {token: callback};
+                    responseCallback(result);
+                })();
+           });
+           function generatorLogNumber(n){
+                return new Promise(res => {
+                    setTimeout(() => {
+                        res("Javascript async/await callback Ok");
+                    }, 1000);
+                })
+            }
+        },1500);
+
+    </script>
+    <body>
+    </body>
+</html>
+
+
