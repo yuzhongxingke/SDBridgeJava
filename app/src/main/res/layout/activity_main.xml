@@ -3,10 +3,11 @@
     android:layout_height="match_parent">
 
     <WebView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="10dp" />
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp" />
 
     <Button
         android:id="@+id/buttonSync"
