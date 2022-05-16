@@ -2,14 +2,21 @@
 ![language](https://img.shields.io/badge/Language-Java-green)
 ![language](https://img.shields.io/badge/support-Javascript/Async/Await-green)
 
-
-### Manual installation
-1.Drag the `example` folder into your project where in `src/main/java/com`.
-
-2.Drag the `bridge.js` `hookConsole` `Demo2.html` files into your project where in `src/main/assets`.
-
 Usage
 -----
+
+## JitPack.io
+
+I strongly recommend https://jitpack.io
+```groovy
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+dependencies {
+    implementation 'com.github.SDBridge:SDBridgeJava:1.0.1'
+}
+```
 
 1) Instantiate bridge with a WebView:
 ```Java
