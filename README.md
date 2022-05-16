@@ -9,58 +9,59 @@ Usage
 
 I strongly recommend https://jitpack.io
 ```groovy
-    repositories {
-        ...
-        maven { url 'https://jitpack.io' }
-    }
+repositories {
+    ...
+    maven { url 'https://jitpack.io' }
+}
 dependencies {
     implementation 'com.github.SDBridge:SDBridgeJava:1.0.1'
 }
 ```
 
-1) Instantiate bridge with a WebView:
+1) Instantiate bridge with a WebView in Java:
 ```Java
-  private void initView() {
-        WebView webview = findViewById(R.id.activity_main_webview);
-        setAllowUniversalAccessFromFileURLs(webview);
-        Button button = findViewById(R.id.button2);
-        Button button3 = findViewById(R.id.button3);
-        button.setOnClickListener(this);
-        button3.setOnClickListener(this);
-        bridge = new WebViewJavascriptBridge(this,webview);
-        bridge.consolePipe(string -> {
-            System.out.println("333333333");
-            System.out.println(string);
-        });
-        bridge.register("DeviceLoadJavascriptSuccess", (map, callback) -> {
-            System.out.println("Next line is javascript data->>>");
-            System.out.println(map);
-            HashMap<String,String> result = new HashMap<>();
-            result.put("result","Android");
-            callback.call(result);
-        });
-        webview.setWebViewClient(new WebViewClient(){
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                Log.d(TAG,"shouldOverrideUrlLoading");
-                view.loadUrl(url);
-                return true;
-            }
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                Log.d(TAG,"onPageStarted");
-                bridge.injectJavascript();
-            }
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                Log.d(TAG,"onPageFinished");
-            }
-        });
-        // Loading html in local ，This way maybe meet cross domain. So You should not forget to set
-        // /*...setAllowUniversalAccessFromFileURLs... */
-        // If you loading remote web server,That can be ignored.
-        webview.loadUrl("file:///android_asset/Demo2.html");
-    }
+  private void setupView() {
+          WebView webview = findViewById(R.id.webView);
+          setAllowUniversalAccessFromFileURLs(webview);
+          Button buttonSync = findViewById(R.id.buttonSync);
+          Button buttonAsync = findViewById(R.id.buttonAsync);
+          buttonSync.setOnClickListener(this);
+          buttonAsync.setOnClickListener(this);
+
+          bridge = new WebViewJavascriptBridge(this,webview);
+          bridge.consolePipe(string -> {
+              System.out.println("333333333");
+              System.out.println(string);
+          });
+          bridge.register("DeviceLoadJavascriptSuccess", (map, callback) -> {
+              System.out.println("Next line is javascript data->>>");
+              System.out.println(map);
+              HashMap<String,String> result = new HashMap<>();
+              result.put("result","Android");
+              callback.call(result);
+          });
+          webview.setWebViewClient(new WebViewClient(){
+              @Override
+              public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                  Log.d(TAG,"shouldOverrideUrlLoading");
+                  view.loadUrl(url);
+                  return true;
+              }
+              @Override
+              public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                  Log.d(TAG,"onPageStarted");
+                  bridge.injectJavascript();
+              }
+              @Override
+              public void onPageFinished(WebView view, String url) {
+                  Log.d(TAG,"onPageFinished");
+              }
+          });
+          // Loading html in local ，This way maybe meet cross domain. So You should not forget to set
+          // /*...setAllowUniversalAccessFromFileURLs... */
+          // If you loading remote web server,That can be ignored.
+          webview.loadUrl("file:///android_asset/Demo.html");
+      }
 ```
 2) In Java, and call a Javascript Sync/Async function:
 ```Java
