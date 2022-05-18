@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (view.getId() == R.id.buttonSync) {
             Log.d(TAG,"buttonSync onClick");
             HashMap<String, String> data = new HashMap<>();
-            data.put("AndroidKey","AndroidValue");
+            data.put("AndroidKey00","AndroidValue00");
             //call js sync function
             bridge.call("GetToken", data, map -> {
                 System.out.println("Next line is javascript data->>>");
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }else if(view.getId() == R.id.buttonAsync){
             Log.d(TAG,"buttonAsync onClick");
             HashMap<String, String> data = new HashMap<>();
-            data.put("AndroidKey","AndroidValue");
+            data.put("AndroidKey01","AndroidValue01");
             //call js Async function
             bridge.call("AsyncCall", data, map -> {
                 System.out.println("Next line is javascript data->>>");

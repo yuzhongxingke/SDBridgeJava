@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
             <title>Title</title>
     </head>
+    <div id="SDBridge"> web content </div>
     <script>
         setTimeout(()=>{
             console.log("Demo222222222222222222");
@@ -13,22 +14,27 @@
                     let result = response.result
                     if (result === "iOS") {
                         console.log("Javascript was loaded by IOS and successfully loaded.");
+                        document.getElementById("SDBridge").innerText = "Javascript was loaded by IOS and successfully loaded.";
                         window.iOSLoadJSSuccess = true;
                     } else if (result === "Android") {
                         console.log("Javascript was loaded by Android and successfully loaded.");
+                        document.getElementById("SDBridge").innerText = "Javascript was loaded by Android and successfully loaded.";
                         window.AndroidLoadJSSuccess = true;
                     }
                 });
                 // JS注册方法让原生来调用
             bridge.registerHandler('GetToken', function(data, responseCallback) {
                     console.log(data);
+                    document.getElementById("SDBridge").innerText = "JS get native data:" + JSON.stringify(data);
                     let result = {token: "I am javascript's token"}
                     //JS拿到数据，返回给原生
                     responseCallback(result)
                 });
             bridge.registerHandler('AsyncCall', function(data, responseCallback) {
                 console.log(data);
-                (async () => {//双括号表示立即执行的匿名函数
+                document.getElementById("SDBridge").innerText = "JS get native data:" + JSON.stringify(data);
+                // Call await function must with  (async () => {})();
+                (async () => {
                     const callback = await generatorLogNumber(1);
                     let result = {token: callback};
                     responseCallback(result);
