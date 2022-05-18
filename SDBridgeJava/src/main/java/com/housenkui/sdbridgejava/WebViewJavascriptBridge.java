@@ -35,8 +35,6 @@ public class WebViewJavascriptBridge {
     }
     @JavascriptInterface
     public void postMessage(String data) {
-        System.out.println("222222222222");
-        System.out.println(data);
         flush(data);
     }
     @JavascriptInterface
@@ -92,7 +90,7 @@ public class WebViewJavascriptBridge {
             String callbackID = (String)message.get("callbackId");
             if (callbackID!=null) {
                 callback = map -> {
-                    HashMap<String,Object> msg = new HashMap();
+                    HashMap<String,Object> msg = new HashMap<String,Object>();
                     msg.put("responseId",callbackID);
                     msg.put("responseData",map);
                     dispatch(msg);
@@ -130,10 +128,10 @@ public class WebViewJavascriptBridge {
             InputStreamReader inputReader = new InputStreamReader(context.getResources().getAssets().open(fileName));
             BufferedReader bufReader = new BufferedReader(inputReader);
             String line;
-            String result = "";
+            StringBuilder result = new StringBuilder();
             while((line = bufReader.readLine()) != null)
-                result += line;
-            return result;
+                result.append(line);
+            return result.toString();
         } catch (Exception e) {
             e.printStackTrace();
         }
