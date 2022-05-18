@@ -7,9 +7,9 @@
     <div id="SDBridge"> web content </div>
     <script>
         setTimeout(()=>{
-            console.log("Demo222222222222222222");
+            console.log("Javascript: Hello World.");
             const bridge = window.WebViewJavascriptBridge;
-            // JS尝试调用原生方法，用来判断自身是否被原生加载成功,并且让自己知道自己使用者是在安卓的App中还是在iOS的App中
+            // JS tries to call the native method to judge whether it has been loaded successfully and let itself know whether its user is in android app or IOS app
             bridge.callHandler('DeviceLoadJavascriptSuccess', {key: 'JSValue'}, function(response) {
                     let result = response.result
                     if (result === "iOS") {
@@ -22,12 +22,12 @@
                         window.AndroidLoadJSSuccess = true;
                     }
                 });
-                // JS注册方法让原生来调用
+                // JS register method is called by native
             bridge.registerHandler('GetToken', function(data, responseCallback) {
                     console.log(data);
                     document.getElementById("SDBridge").innerText = "JS get native data:" + JSON.stringify(data);
                     let result = {token: "I am javascript's token"}
-                    //JS拿到数据，返回给原生
+                    //JS gets the data and returns it to the native
                     responseCallback(result)
                 });
             bridge.registerHandler('AsyncCall', function(data, responseCallback) {
