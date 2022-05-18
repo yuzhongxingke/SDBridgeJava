@@ -90,7 +90,8 @@ dependencies {
 3) In javascript file or typescript and html file like :
 	
 ```javascript
- <script>
+<div id="SDBridge"> web content </div>
+<script>
     // Give webview 1.5s to load other javascript files.
     setTimeout(()=>{
         console.log("Demo222222222222222222");
@@ -100,21 +101,25 @@ dependencies {
             let result = response.result
             if (result === "iOS") {
             console.log("Javascript was loaded by IOS and successfully loaded.");
+            document.getElementById("SDBridge").innerText = "Javascript was loaded by IOS and successfully loaded.";
             window.iOSLoadJSSuccess = true;
            } else if (result === "Android") {
             console.log("Javascript was loaded by Android and successfully loaded.");
+            document.getElementById("SDBridge").innerText = "Javascript was loaded by Android and successfully loaded.";
             window.AndroidLoadJSSuccess = true;
            }
         });
         // JS register method is called by native
         bridge.registerHandler('GetToken', function(data, responseCallback) {
             console.log(data);
+            document.getElementById("SDBridge").innerText = "JS get native data:" + JSON.stringify(data);
             let result = {token: "I am javascript's token"}
             //JS gets the data and returns it to the native
             responseCallback(result)
         });
         bridge.registerHandler('AsyncCall', function(data, responseCallback) {
             console.log(data);
+            document.getElementById("SDBridge").innerText = "JS get native data:" + JSON.stringify(data);
             //Call await function must with  (async () => {})();
             (async () => {
             const callback = await generatorLogNumber(1);
