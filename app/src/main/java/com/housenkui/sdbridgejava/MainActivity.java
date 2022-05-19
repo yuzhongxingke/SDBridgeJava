@@ -65,6 +65,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // /*...setAllowUniversalAccessFromFileURLs... */
         // If you loading remote web server,That can be ignored.
         webview.loadUrl("file:///android_asset/Demo.html");
+        
+//      index.html use SDBridge.js. This js file was create by webpack.
+//      webview.loadUrl("file:///android_asset/index.html");
     }
 
     @Override
