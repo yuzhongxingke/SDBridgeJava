@@ -143,9 +143,19 @@ dependencies {
 
 </script>
 ```
-# Contact
+# Global support for free
+WhatsApp:
+[SDBridgeJava Support](https://chat.whatsapp.com/ETPoddqgo3K8185st4asCc)
 
-- Email: housenkui@gmail.com
+Telegram:
+[SDBridgeJava Support](https://t.me/+gfnIcLrYbYoxNWM1)
+
+WeChat Group:
+
+![](Resource/SDBridgeJavaSupport.JPG)
+
+Email:
+housenkui@gmail.com
 
 ## License
 
