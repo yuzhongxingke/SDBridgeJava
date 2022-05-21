@@ -1,10 +1,8 @@
 ;(function(window) {
-
     if(window.hookConsole){
-        console.log("已经完成hookConsole");
+        console.log("hook Console have already finished.");
         return ;
     }
-    console.log("开始hookConsole");
     let printObject = function (obj) {
         let output = "";
         if (obj === null) {
@@ -27,13 +25,29 @@
         }
         return output;
     };
+    console.log("start hook Console.");
     window.console.log = (function (oriLogFunc,printObject) {
+        window.hookConsole = 1;
         return function (str) {
-            str = printObject(str);
-             window.consolePipe.receiveConsole(str);
             oriLogFunc.call(window.console, str);
-            window.hookConsole = 1;
+            for (let i = 0; i < arguments.length; i++) {
+                const obj = arguments[i];
+                if (obj instanceof Promise){
+                    const promiseString = "This is a javascript Promise.";
+                    window.consolePipe.receiveConsole(promiseString);
+                } else if(obj instanceof Date){
+                    const dateString =  obj.getTime().toString();
+                    window.consolePipe.receiveConsole(dateString);
+                } else if(obj instanceof Array){
+                    let arrayString = '[' + obj.toString() + ']';
+                    window.consolePipe.receiveConsole(arrayString);
+                }
+                else{
+                    const objs = printObject(obj);
+                    window.consolePipe.receiveConsole(objs);
+                }
+            }
         }
     })(window.console.log,printObject);
-
+    console.log("end hook Console.");
 })(window);
