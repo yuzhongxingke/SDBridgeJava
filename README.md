@@ -20,7 +20,7 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 dependencies {
-    implementation 'com.github.SDBridge:SDBridgeJava:1.0.1'
+    implementation 'com.github.SDBridge:SDBridgeJava:1.0.3'
 }
 ```
 
@@ -156,6 +156,12 @@ WeChat Group:
 
 Email:
 housenkui@gmail.com
+
+# History version update ?
+[v1.0.3](https://github.com/SDBridge/SDBridgeJava)
+
+1.Java can get console.log [Multi parameter](https://github.com/SDBridge/SDBridgeJava/blob/master/SDBridgeJava/src/main/assets/hookConsole.js#L33).
+
 
 ## License
 
