@@ -20,7 +20,7 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 dependencies {
-    implementation 'com.github.SDBridge:SDBridgeJava:1.0.3'
+    implementation 'com.github.SDBridge:SDBridgeJava:1.0.4'
 }
 ```
 
@@ -162,6 +162,9 @@ housenkui@gmail.com
 
 1.Java can get console.log [Multi parameter](https://github.com/SDBridge/SDBridgeJava/blob/master/SDBridgeJava/src/main/assets/hookConsole.js#L33).
 
+[v1.0.4](https://github.com/SDBridge/SDBridgeJava)
+
+1.Optimized coding.
 
 ## License
 
