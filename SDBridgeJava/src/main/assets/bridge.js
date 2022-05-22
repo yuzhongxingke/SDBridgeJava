@@ -1,5 +1,4 @@
 ;(function(window) {
-    console.log("bridge11111111111111");
     if (window.WebViewJavascriptBridge) {
         return;
     }
@@ -8,9 +7,9 @@
         callHandler: callHandler,
         handleMessageFromNative: handleMessageFromNative
     };
-    var messageHandlers = {};
-    var responseCallbacks = {};
-    var uniqueId = 1;
+    let messageHandlers = {};
+    let responseCallbacks = {};
+    let uniqueId = 1;
     function registerHandler(handlerName, handler) {
         messageHandlers[handlerName] = handler;
     }
@@ -23,15 +22,15 @@
     }
     function doSend(message, responseCallback) {
         if (responseCallback) {
-            var callbackId = 'cb_'+(uniqueId++)+'_'+new Date().getTime();
+            const callbackId = 'cb_'+(uniqueId++)+'_'+new Date().getTime();
             responseCallbacks[callbackId] = responseCallback;
             message['callbackId'] = callbackId;
         }
         window.normalPipe.postMessage(JSON.stringify(message));
     }
     function handleMessageFromNative(messageJSON) {
-        var message = JSON.parse(messageJSON);
-        var responseCallback;
+        const message = JSON.parse(messageJSON);
+        let responseCallback;
         if (message.responseId) {
             responseCallback = responseCallbacks[message.responseId];
             if (!responseCallback) {
@@ -41,14 +40,14 @@
             delete responseCallbacks[message.responseId];
         } else {
             if (message.callbackId) {
-                var callbackResponseId = message.callbackId;
+                const callbackResponseId = message.callbackId;
                 responseCallback = function(responseData) {
                     doSend({ handlerName:message.handlerName, responseId:callbackResponseId, responseData:responseData });
                 };
             }
-            var handler = messageHandlers[message.handlerName];
+            const handler = messageHandlers[message.handlerName];
             if (!handler) {
-                console.log("WebViewJavascriptBridge: WARNING: no handler for message from ObjC:", message);
+                console.log("WebViewJavascriptBridge: WARNING: no handler for message from Java:", message);
             } else {
                 handler(message.data, responseCallback);
             }

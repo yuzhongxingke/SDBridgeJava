@@ -5,13 +5,7 @@
     }
     let printObject = function (obj) {
         let output = "";
-        if (obj === null) {
-            output += "null";
-        }
-        else  if (typeof(obj) == "undefined") {
-            output += "undefined";
-        }
-        else if (typeof obj ==='object'){
+        if (typeof obj ==='object'){
             output+="{";
             for(let key in obj){
                 let value = obj[key];
@@ -32,7 +26,15 @@
             oriLogFunc.call(window.console, str);
             for (let i = 0; i < arguments.length; i++) {
                 const obj = arguments[i];
-                if (obj instanceof Promise){
+                if (obj === null) {
+                    const nullString = "null";
+                    window.consolePipe.receiveConsole(nullString);
+                }
+                else  if (typeof(obj) == "undefined") {
+                    const undefinedString = "undefined";
+                    window.consolePipe.receiveConsole(undefinedString);
+                }
+                else if (obj instanceof Promise){
                     const promiseString = "This is a javascript Promise.";
                     window.consolePipe.receiveConsole(promiseString);
                 } else if(obj instanceof Date){
@@ -42,7 +44,7 @@
                     let arrayString = '[' + obj.toString() + ']';
                     window.consolePipe.receiveConsole(arrayString);
                 }
-                else{
+                else {
                     const objs = printObject(obj);
                     window.consolePipe.receiveConsole(objs);
                 }
