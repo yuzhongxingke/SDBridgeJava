@@ -23,9 +23,9 @@
     window.console.log = (function (oriLogFunc,printObject) {
         window.hookConsole = 1;
         return function (str) {
-            oriLogFunc.call(window.console, str);
             for (let i = 0; i < arguments.length; i++) {
                 const obj = arguments[i];
+                oriLogFunc.call(window.console, obj);
                 if (obj === null) {
                     const nullString = "null";
                     window.consolePipe.receiveConsole(nullString);

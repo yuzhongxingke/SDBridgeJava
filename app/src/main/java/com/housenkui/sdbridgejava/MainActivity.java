@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         bridge = new WebViewJavascriptBridge(this,webview);
         bridge.consolePipe(string -> {
-            System.out.println("Next line is javascript console.log");
+            System.out.println("Next line is javascript console.log->>>");
             System.out.println(string);
         });
         bridge.register("DeviceLoadJavascriptSuccess", (map, callback) -> {
