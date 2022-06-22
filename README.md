@@ -8,7 +8,7 @@
 If your h5 partner confused about how to deal with iOS and Android.
 [This Demo maybe help](https://github.com/SDBridge/TypeScriptDemo).
 
-[视频接入教程和常见问题都在这里](https://search.bilibili.com/all?vt=10558286&keyword=SDBridgeJava&from_source=webtop_search&spm_id_from=333.788).
+[视频接入教程和常见问题都在这里（遇到问题一定要看哦😯 ）](https://search.bilibili.com/all?vt=10558286&keyword=SDBridgeJava&from_source=webtop_search&spm_id_from=333.788).
 
 [YouTube video is here](https://www.youtube.com/channel/UCejg0KqpAvoEem4v5y1QbpA/videos).
 
