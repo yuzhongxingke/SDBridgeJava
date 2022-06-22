@@ -154,9 +154,9 @@ WhatsApp:
 Telegram:
 [SDBridgeJava Support](https://t.me/+gfnIcLrYbYoxNWM1)
 
-WeChat Group:
+WeChat :
 
-![](Resource/SDBridgeJavaSupport.JPG)
+![](Resource/wechat.png)
 
 Email:
 housenkui@gmail.com
