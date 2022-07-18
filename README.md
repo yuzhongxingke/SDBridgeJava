@@ -8,6 +8,13 @@
 If your h5 partner confused about how to deal with iOS and Android.
 [This Demo maybe help](https://github.com/SDBridge/TypeScriptDemo).
 
+最常见的问题.
+WebViewJavascriptBridge is not defined 的处理方案.
+
+是js或者ts在使用的时候，WebViewJavascriptBridge对象还没有挂载到window上 ，让js或者ts自己挂载!!!
+
+[具体的js或者ts如何做可以看这个视频](https://www.bilibili.com/video/BV1yR4y1w7eg?spm_id_from=333.337.search-card.all.click&vd_source=cd80c47929fafb873ff1a9fb57ac09f4).
+
 [视频接入教程和常见问题都在这里（遇到问题一定要看哦😯 ）](https://search.bilibili.com/all?vt=10558286&keyword=SDBridgeJava&from_source=webtop_search&spm_id_from=333.788).
 
 [YouTube video is here](https://www.youtube.com/channel/UCejg0KqpAvoEem4v5y1QbpA/videos).
