@@ -22,7 +22,7 @@ WebViewJavascriptBridge is not defined 的处理方案.
 Usage
 -----
 
-## JitPack.io
+## JitPack.io 
 
 I strongly recommend https://jitpack.io
 ```groovy
