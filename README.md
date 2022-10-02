@@ -154,20 +154,6 @@ dependencies {
 
 </script>
 ```
-# Global support for free
-WhatsApp:
-[SDBridgeJava Support](https://chat.whatsapp.com/ETPoddqgo3K8185st4asCc)
-
-Telegram:
-[SDBridgeJava Support](https://t.me/+gfnIcLrYbYoxNWM1)
-
-WeChat :
-
-![](Resource/wechat.png)
-
-Email:
-housenkui@gmail.com
-
 # History version update ?
 [v1.0.3](https://github.com/SDBridge/SDBridgeJava)
 
